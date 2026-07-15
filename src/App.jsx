@@ -47,6 +47,7 @@ function App() {
       <Header
         onAddClick={() => setAddModalOpen(true)}
         onSettingsClick={() => setSettingsOpen(true)}
+        isLanding={habits.length === 0}
       />
 
       <ReminderManager settings={settings} habits={habits} />

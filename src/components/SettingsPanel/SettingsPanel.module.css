@@ -4,8 +4,10 @@
 
 .content {
   background: var(--color-surface);
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   padding: var(--space-lg);
+  box-shadow: var(--shadow-xl);
   animation: scaleIn var(--transition-normal);
 }
 
@@ -35,12 +37,12 @@
 }
 
 .closeBtn:hover {
-  background: var(--color-border-light);
+  background: var(--color-surface-elevated);
 }
 
 .section {
   padding: var(--space-md) 0;
-  border-bottom: 1px solid var(--color-border-light);
+  border-bottom: 1px solid var(--color-border);
 }
 
 .section:last-child {
@@ -120,7 +122,7 @@
   border: 2px solid var(--color-border);
   border-radius: var(--radius-sm);
   font-size: 0.9rem;
-  background: var(--color-surface);
+  background: var(--color-bg);
   color: var(--color-text);
 }
 
