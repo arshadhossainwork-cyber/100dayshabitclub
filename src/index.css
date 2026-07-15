@@ -133,6 +133,7 @@ html {
   line-height: 1.5;
   color: var(--color-text);
   background-color: var(--color-bg);
+  color-scheme: dark;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   scroll-behavior: smooth;
@@ -192,6 +193,7 @@ dialog {
   border: none;
   padding: 0;
   background: transparent;
+  color: var(--color-text);
   max-width: min(90vw, 440px);
   width: 100%;
 }
