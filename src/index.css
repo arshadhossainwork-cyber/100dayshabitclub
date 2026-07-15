@@ -144,9 +144,9 @@ body {
 
 /* Selection */
 ::selection {
-  background: rgba(16, 185, 129, 0.3);
-  color: var(--color-text);
-  -webkit-text-fill-color: var(--color-text);
+  background: #10B981 !important;
+  color: #FFFFFF !important;
+  -webkit-text-fill-color: #FFFFFF !important;
 }
 
 #root {

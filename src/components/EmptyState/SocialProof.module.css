@@ -58,8 +58,7 @@
 }
 
 .statValue::selection {
-  -webkit-text-fill-color: var(--color-text);
-  background: rgba(16, 185, 129, 0.3);
+  -webkit-text-fill-color: #FFFFFF !important;
 }
 
 .statLabel {
@@ -100,8 +99,7 @@
 }
 
 .accent::selection {
-  -webkit-text-fill-color: var(--color-text);
-  background: rgba(16, 185, 129, 0.3);
+  -webkit-text-fill-color: #FFFFFF !important;
 }
 
 .testimonialGrid {
