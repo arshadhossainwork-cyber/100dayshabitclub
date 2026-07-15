@@ -142,6 +142,13 @@ body {
   min-height: 100dvh;
 }
 
+/* Selection */
+::selection {
+  background: rgba(16, 185, 129, 0.3);
+  color: var(--color-text);
+  -webkit-text-fill-color: var(--color-text);
+}
+
 #root {
   min-height: 100dvh;
   display: flex;
