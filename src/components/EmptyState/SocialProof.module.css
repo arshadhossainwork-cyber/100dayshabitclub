@@ -57,6 +57,11 @@
   -webkit-text-fill-color: transparent;
 }
 
+.statValue::selection {
+  -webkit-text-fill-color: var(--color-text);
+  background: rgba(16, 185, 129, 0.3);
+}
+
 .statLabel {
   font-size: var(--text-small);
   color: var(--color-text-muted);
@@ -92,6 +97,11 @@
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.accent::selection {
+  -webkit-text-fill-color: var(--color-text);
+  background: rgba(16, 185, 129, 0.3);
 }
 
 .testimonialGrid {
