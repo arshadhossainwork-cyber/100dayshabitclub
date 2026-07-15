@@ -97,6 +97,10 @@
   position: relative;
 }
 
+.segment:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
 .segmentActive {
   background: rgba(255, 255, 255, 0.12);
 }

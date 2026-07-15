@@ -143,6 +143,10 @@
   transform: translateY(-1px);
 }
 
+.submitBtn:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
 @keyframes scaleIn {
   from {
     opacity: 0;

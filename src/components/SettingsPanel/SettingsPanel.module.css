@@ -104,8 +104,16 @@
   box-shadow: var(--shadow-sm);
 }
 
+.toggleSlider:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
 .toggleInput:checked + .toggleSlider {
   background: var(--color-primary);
+}
+
+.toggleInput:checked + .toggleSlider:hover {
+  background: var(--color-primary-hover);
 }
 
 .toggleInput:checked + .toggleSlider::before {

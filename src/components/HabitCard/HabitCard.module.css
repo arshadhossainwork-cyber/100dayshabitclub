@@ -127,6 +127,10 @@
   background: var(--color-surface-elevated);
 }
 
+.menuBtn:active {
+  transform: scale(0.95);
+}
+
 .menu {
   position: absolute;
   right: var(--space-md);
@@ -157,6 +161,10 @@
 .menuItemDanger {
   composes: menuItem;
   color: var(--color-danger);
+}
+
+.menuItemDanger:hover {
+  background: var(--color-danger-light);
 }
 
 .headerWrapper {
