@@ -3,32 +3,56 @@ import {
   isNotificationSupported,
   getPermissionStatus,
   sendNotification,
+  scheduleNotification,
+  cancelScheduledNotification,
+  isNative,
 } from '../utils/notifications.js';
 import { getToday } from '../utils/dates.js';
 
 export function useReminder(settings, habits) {
   const lastNotifiedRef = useRef(null);
 
+  // Native: schedule a daily repeating notification via the OS
   useEffect(() => {
+    if (!isNative) return;
+
+    if (!settings.reminderEnabled) {
+      cancelScheduledNotification();
+      return;
+    }
+
+    const [h, m] = settings.reminderTime.split(':').map(Number);
+    scheduleNotification(
+      '100 Days Habit Club',
+      "Don't forget to complete your habits today!",
+      h,
+      m
+    );
+
+    return () => {
+      // Cleanup on unmount — don't cancel here since we want it to persist
+    };
+  }, [settings.reminderEnabled, settings.reminderTime]);
+
+  // Browser: poll every 30 seconds (original behavior)
+  useEffect(() => {
+    if (isNative) return;
     if (!settings.reminderEnabled) return;
     if (!isNotificationSupported()) return;
-    if (getPermissionStatus() !== 'granted') return;
 
-    const checkInterval = setInterval(() => {
+    let cancelled = false;
+
+    async function check() {
+      const perm = await getPermissionStatus();
+      if (perm !== 'granted') return;
+
       const now = new Date();
       const [targetH, targetM] = settings.reminderTime.split(':').map(Number);
 
-      const currentH = now.getHours();
-      const currentM = now.getMinutes();
-
-      // Check if it's time (within the same minute)
-      if (currentH === targetH && currentM === targetM) {
+      if (now.getHours() === targetH && now.getMinutes() === targetM) {
         const today = getToday();
-
-        // Don't send multiple notifications in the same day
         if (lastNotifiedRef.current === today) return;
 
-        // Check if there are incomplete habits
         const incomplete = habits.filter(
           (h) => !h.archived && !h.completedDays.includes(today)
         );
@@ -42,8 +66,12 @@ export function useReminder(settings, habits) {
           });
         }
       }
-    }, 30000); // Check every 30 seconds
+    }
 
-    return () => clearInterval(checkInterval);
+    const checkInterval = setInterval(check, 30000);
+    return () => {
+      cancelled = true;
+      clearInterval(checkInterval);
+    };
   }, [settings.reminderEnabled, settings.reminderTime, habits]);
 }

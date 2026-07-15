@@ -8,7 +8,11 @@ import styles from './SettingsPanel.module.css';
 
 export default function SettingsPanel({ open, settings, onUpdateSettings, onClose }) {
   const dialogRef = useRef(null);
-  const [permission, setPermission] = useState(() => getPermissionStatus());
+  const [permission, setPermission] = useState('default');
+
+  useEffect(() => {
+    getPermissionStatus().then(setPermission);
+  }, []);
 
   useEffect(() => {
     const dialog = dialogRef.current;
@@ -16,7 +20,7 @@ export default function SettingsPanel({ open, settings, onUpdateSettings, onClos
 
     if (open) {
       dialog.showModal();
-      setPermission(getPermissionStatus());
+      getPermissionStatus().then(setPermission);
     } else {
       dialog.close();
     }
@@ -105,7 +109,7 @@ export default function SettingsPanel({ open, settings, onUpdateSettings, onClos
                   {permission === 'granted'
                     ? 'Notifications enabled'
                     : permission === 'denied'
-                    ? 'Notifications blocked. Enable in browser settings'
+                    ? 'Notifications blocked. Enable in system settings'
                     : 'Not yet requested'}
                 </div>
               </div>

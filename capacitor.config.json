@@ -1,0 +1,24 @@
+{
+  "appId": "com.habitclub.app",
+  "appName": "100 Days Habit Club",
+  "webDir": "dist",
+  "backgroundColor": "#080A10",
+  "android": {
+    "backgroundColor": "#080A10"
+  },
+  "plugins": {
+    "LocalNotifications": {
+      "smallIcon": "ic_stat_icon",
+      "iconColor": "#34D399"
+    },
+    "SplashScreen": {
+      "backgroundColor": "#080A10",
+      "launchAutoHide": true,
+      "androidScaleType": "CENTER_CROP"
+    },
+    "StatusBar": {
+      "backgroundColor": "#080A10",
+      "style": "DARK"
+    }
+  }
+}
