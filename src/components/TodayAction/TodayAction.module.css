@@ -22,10 +22,12 @@
   box-shadow: 0 3px 16px rgba(0, 0, 0, 0.3), 0 0 12px rgba(16, 185, 129, 0.15);
 }
 
-.incomplete:hover {
-  filter: brightness(1.15);
-  transform: translateY(-2px);
-  box-shadow: 0 5px 24px rgba(0, 0, 0, 0.4), 0 0 20px rgba(16, 185, 129, 0.2);
+@media (hover: hover) {
+  .incomplete:hover {
+    filter: brightness(1.15);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 24px rgba(0, 0, 0, 0.4), 0 0 20px rgba(16, 185, 129, 0.2);
+  }
 }
 
 .incomplete:active {
@@ -40,9 +42,11 @@
   border: 1px solid rgba(16, 185, 129, 0.3);
 }
 
-.complete:hover {
-  background: rgba(16, 185, 129, 0.18);
-  box-shadow: 0 0 16px rgba(16, 185, 129, 0.1);
+@media (hover: hover) {
+  .complete:hover {
+    background: rgba(16, 185, 129, 0.18);
+    box-shadow: 0 0 16px rgba(16, 185, 129, 0.1);
+  }
 }
 
 .check {

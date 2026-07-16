@@ -91,8 +91,10 @@
   transition: color var(--transition-fast);
 }
 
-.navLink:hover {
-  color: var(--color-text);
+@media (hover: hover) {
+  .navLink:hover {
+    color: var(--color-text);
+  }
 }
 
 /* Actions */
@@ -113,9 +115,11 @@
   transition: background var(--transition-fast), color var(--transition-fast);
 }
 
-.iconBtn:hover {
-  background: rgba(255, 255, 255, 0.06);
-  color: var(--color-text);
+@media (hover: hover) {
+  .iconBtn:hover {
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--color-text);
+  }
 }
 
 .addBtn {

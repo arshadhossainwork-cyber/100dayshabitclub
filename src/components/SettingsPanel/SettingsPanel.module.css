@@ -36,8 +36,10 @@
   transition: background var(--transition-fast);
 }
 
-.closeBtn:hover {
-  background: var(--color-surface-elevated);
+@media (hover: hover) {
+  .closeBtn:hover {
+    background: var(--color-surface-elevated);
+  }
 }
 
 .section {
@@ -104,16 +106,20 @@
   box-shadow: var(--shadow-sm);
 }
 
-.toggleSlider:hover {
-  background: rgba(255, 255, 255, 0.1);
+@media (hover: hover) {
+  .toggleSlider:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
 }
 
 .toggleInput:checked + .toggleSlider {
   background: var(--color-primary);
 }
 
-.toggleInput:checked + .toggleSlider:hover {
-  background: var(--color-primary-hover);
+@media (hover: hover) {
+  .toggleInput:checked + .toggleSlider:hover {
+    background: var(--color-primary-hover);
+  }
 }
 
 .toggleInput:checked + .toggleSlider::before {
@@ -149,8 +155,10 @@
   transition: background var(--transition-fast);
 }
 
-.permissionBtn:hover {
-  background: var(--color-primary-hover);
+@media (hover: hover) {
+  .permissionBtn:hover {
+    background: var(--color-primary-hover);
+  }
 }
 
 .permissionStatus {

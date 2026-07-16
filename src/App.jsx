@@ -8,6 +8,7 @@ import EditHabitModal from './components/EditHabitModal/EditHabitModal.jsx';
 import ConfirmDialog from './components/ConfirmDialog/ConfirmDialog.jsx';
 import SettingsPanel from './components/SettingsPanel/SettingsPanel.jsx';
 import ReminderManager from './components/ReminderManager/ReminderManager.jsx';
+import { Analytics } from '@vercel/analytics/react';
 import './App.css';
 
 function App() {
@@ -101,6 +102,8 @@ function App() {
         onUpdateSettings={updateSettings}
         onClose={() => setSettingsOpen(false)}
       />
+
+      <Analytics />
     </>
   );
 }

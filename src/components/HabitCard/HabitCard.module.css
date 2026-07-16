@@ -9,10 +9,12 @@
   transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
 }
 
-.card:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-lg), 0 0 20px rgba(16, 185, 129, 0.06);
-  border-color: rgba(16, 185, 129, 0.2);
+@media (hover: hover) {
+  .card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg), 0 0 20px rgba(16, 185, 129, 0.06);
+    border-color: rgba(16, 185, 129, 0.2);
+  }
 }
 
 /* Left accent bar */
@@ -39,8 +41,10 @@
   transition: background var(--transition-fast);
 }
 
-.header:hover {
-  background: var(--color-surface-elevated);
+@media (hover: hover) {
+  .header:hover {
+    background: var(--color-surface-elevated);
+  }
 }
 
 .headerLeft {
@@ -123,8 +127,10 @@
   transition: background var(--transition-fast);
 }
 
-.menuBtn:hover {
-  background: var(--color-surface-elevated);
+@media (hover: hover) {
+  .menuBtn:hover {
+    background: var(--color-surface-elevated);
+  }
 }
 
 .menuBtn:active {
@@ -154,8 +160,10 @@
   transition: background var(--transition-fast);
 }
 
-.menuItem:hover {
-  background: var(--color-border-light);
+@media (hover: hover) {
+  .menuItem:hover {
+    background: var(--color-border-light);
+  }
 }
 
 .menuItemDanger {
@@ -163,8 +171,10 @@
   color: var(--color-danger);
 }
 
-.menuItemDanger:hover {
-  background: var(--color-danger-light);
+@media (hover: hover) {
+  .menuItemDanger:hover {
+    background: var(--color-danger-light);
+  }
 }
 
 .headerWrapper {

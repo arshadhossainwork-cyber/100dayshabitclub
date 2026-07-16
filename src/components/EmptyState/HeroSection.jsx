@@ -1,7 +1,10 @@
 import { useRef, useMemo } from 'react';
+import { Capacitor } from '@capacitor/core';
 import useMousePosition from '../../hooks/useMousePosition';
 import useReducedMotion from '../../hooks/useReducedMotion';
 import styles from './HeroSection.module.css';
+
+const isNative = Capacitor.isNativePlatform();
 
 function Particles() {
   const particles = useMemo(() =>
@@ -40,13 +43,13 @@ function Particles() {
 export default function HeroSection({ onAddClick }) {
   const heroRef = useRef(null);
   const reduced = useReducedMotion();
-  useMousePosition(heroRef);
+  useMousePosition(isNative ? null : heroRef);
 
   return (
     <section className={styles.hero} ref={heroRef} aria-label="Hero">
-      {!reduced && <Particles />}
+      {!reduced && !isNative && <Particles />}
 
-      <div className={styles.mouseLight} aria-hidden="true" />
+      {!isNative && <div className={styles.mouseLight} aria-hidden="true" />}
 
       <div className={styles.content}>
         <div className={styles.label}>

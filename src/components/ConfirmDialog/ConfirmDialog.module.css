@@ -47,9 +47,11 @@
   transition: background var(--transition-fast), transform var(--transition-fast);
 }
 
-.cancelBtn:hover {
-  background: var(--color-surface-elevated);
-  transform: translateY(-1px);
+@media (hover: hover) {
+  .cancelBtn:hover {
+    background: var(--color-surface-elevated);
+    transform: translateY(-1px);
+  }
 }
 
 .confirmBtn {
@@ -62,9 +64,11 @@
   transition: background var(--transition-fast), transform var(--transition-fast);
 }
 
-.confirmBtn:hover {
-  background: var(--color-danger-hover);
-  transform: translateY(-1px);
+@media (hover: hover) {
+  .confirmBtn:hover {
+    background: var(--color-danger-hover);
+    transform: translateY(-1px);
+  }
 }
 
 @keyframes scaleIn {
