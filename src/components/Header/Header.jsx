@@ -31,14 +31,14 @@ export default function Header({
       className={`${styles.header} ${scrolled ? styles.scrolled : ''} ${isLanding ? styles.landing : ''}`}
     >
       <div className={styles.inner}>
-        <div className={styles.titleGroup}>
+        <Link to="/" className={styles.titleGroup} aria-label="Home">
           <div className={styles.logoMark} aria-hidden="true">
             <span /><span /><span /><span />
           </div>
           <h1 className={styles.title}>
             <span className={styles.titleAccent}>100</span> Days
           </h1>
-        </div>
+        </Link>
 
         {isLanding && (
           <nav className={styles.nav} aria-label="Page navigation">

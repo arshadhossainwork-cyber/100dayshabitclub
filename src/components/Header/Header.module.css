@@ -35,6 +35,8 @@
   display: flex;
   align-items: center;
   gap: var(--space-sm);
+  text-decoration: none;
+  color: inherit;
 }
 
 /* CSS grid mark logo: 2x2 squares */
