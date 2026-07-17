@@ -2,11 +2,17 @@ import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext.jsx';
 import { useToast } from '../../hooks/useToast.jsx';
+import { useDocumentMeta } from '../../hooks/useDocumentMeta.js';
 import AuthLayout from '../AuthLayout/AuthLayout.jsx';
 import PrivacyPolicy from '../../components/PrivacyPolicy/PrivacyPolicy.jsx';
 import styles from '../authStyles.module.css';
 
 export default function SignupPage() {
+  useDocumentMeta({
+    title: 'Create Account',
+    description: 'Create a free account to protect your streaks and sync across devices.',
+    path: '/signup',
+  });
   const { signUp, signInWithGoogle, isSignedIn } = useAuth();
   const { showToast } = useToast();
   const navigate = useNavigate();

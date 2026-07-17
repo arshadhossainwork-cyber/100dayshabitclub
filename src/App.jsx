@@ -1,6 +1,7 @@
 import { useState, useEffect, useMemo, useRef } from 'react';
 import { useHabits } from './hooks/useHabits.js';
 import { useToast } from './hooks/useToast.jsx';
+import { useDocumentMeta } from './hooks/useDocumentMeta.js';
 import { useAuth } from './contexts/AuthContext.jsx';
 import { useSync } from './hooks/useSync.js';
 import { useMigration } from './hooks/useMigration.js';
@@ -27,6 +28,7 @@ import { captureReferralSource } from './utils/referral.js';
 import UpdateNotification from './components/UpdateNotification/UpdateNotification.jsx';
 import OfflineIndicator from './components/OfflineIndicator/OfflineIndicator.jsx';
 import InstallPrompt from './components/InstallPrompt/InstallPrompt.jsx';
+import Footer from './components/Footer/Footer.jsx';
 import { Analytics } from '@vercel/analytics/react';
 import './App.css';
 
@@ -272,13 +274,20 @@ function App() {
 
   // Gate dashboard on migration check to prevent empty flash
   const isCheckingMigration = migrationState === 'checking' || migrationState === 'migrating';
+  const isLanding = habits.length === 0 && !isCheckingMigration;
+
+  useDocumentMeta({
+    title: isLanding ? null : 'My Habits',
+    description: 'Build any habit in 100 days. Free habit tracker with streaks, progress grid, and milestones. Works offline, syncs across devices.',
+    path: '/',
+  });
 
   return (
     <>
       <Header
         onAddClick={() => setAddModalOpen(true)}
         onSettingsClick={() => setSettingsOpen(true)}
-        isLanding={habits.length === 0 && !isCheckingMigration}
+        isLanding={isLanding}
         isSignedIn={isSignedIn}
         isSupabaseConfigured={isSupabaseConfigured}
         userAvatarUrl={user?.user_metadata?.avatar_url}
@@ -316,6 +325,8 @@ function App() {
           />
         )}
       </main>
+
+      <Footer />
 
       <GuestNotice
         dismissed={settings.guestNoticeDismissed || isSignedIn}

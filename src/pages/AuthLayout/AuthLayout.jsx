@@ -3,7 +3,7 @@ import styles from './AuthLayout.module.css';
 
 export default function AuthLayout({ title, subtitle, children }) {
   return (
-    <div className={styles.container}>
+    <main className={styles.container}>
       <div className={styles.card}>
         <Link to="/" className={styles.logoLink}>
           <div className={styles.logoMark} aria-hidden="true">
@@ -19,6 +19,6 @@ export default function AuthLayout({ title, subtitle, children }) {
 
         {children}
       </div>
-    </div>
+    </main>
   );
 }

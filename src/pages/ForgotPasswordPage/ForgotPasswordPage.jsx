@@ -1,10 +1,17 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext.jsx';
+import { useDocumentMeta } from '../../hooks/useDocumentMeta.js';
 import AuthLayout from '../AuthLayout/AuthLayout.jsx';
 import styles from '../authStyles.module.css';
 
 export default function ForgotPasswordPage() {
+  useDocumentMeta({
+    title: 'Forgot Password',
+    description: 'Reset your 100 Days Habit Club password.',
+    path: '/forgot-password',
+    noindex: true,
+  });
   const { resetPassword } = useAuth();
 
   const [email, setEmail] = useState('');

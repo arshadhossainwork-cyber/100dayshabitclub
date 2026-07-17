@@ -57,10 +57,10 @@ export default function HeroSection({ onAddClick }) {
           Free. Private. No account required.
         </div>
 
-        <h2 className={styles.heading}>
+        <h1 className={styles.heading}>
           <span className={styles.headingLine}>Build any habit</span>
           <span className={styles.headingAccent}>in 100 days</span>
-        </h2>
+        </h1>
 
         <p className={styles.subtitle}>
           Pick a habit. Show up daily. Watch your grid fill up.

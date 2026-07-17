@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { supabase } from '../../lib/supabase.js';
 import { fetchSharedCardBySlug } from '../../lib/shareRepository.js';
+import { useDocumentMeta } from '../../hooks/useDocumentMeta.js';
 import { captureReferralSource } from '../../utils/referral.js';
 import styles from './SharedCardPage.module.css';
 
@@ -11,19 +12,14 @@ export default function SharedCardPage() {
   const [loading, setLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
 
+  useDocumentMeta({
+    title: 'Shared Progress',
+    description: 'View shared habit tracking progress on 100 Days Habit Club.',
+    noindex: true,
+  });
+
   useEffect(() => {
     captureReferralSource();
-  }, []);
-
-  // Inject noindex meta tag
-  useEffect(() => {
-    const meta = document.createElement('meta');
-    meta.name = 'robots';
-    meta.content = 'noindex, nofollow';
-    document.head.appendChild(meta);
-    return () => {
-      document.head.removeChild(meta);
-    };
   }, []);
 
   useEffect(() => {
@@ -70,7 +66,7 @@ export default function SharedCardPage() {
 
   if (notFound) {
     return (
-      <div className={styles.page}>
+      <main className={styles.page}>
         <div className={styles.expired}>
           <h1 className={styles.expiredTitle}>Link Expired</h1>
           <p className={styles.expiredBody}>
@@ -82,7 +78,7 @@ export default function SharedCardPage() {
             </Link>
           </div>
         </div>
-      </div>
+      </main>
     );
   }
 
@@ -91,7 +87,7 @@ export default function SharedCardPage() {
   const gridFilled = data.gridFilled || 0;
 
   return (
-    <div className={styles.page}>
+    <main className={styles.page}>
       <div className={styles.card}>
         <div className={styles.accentBar} style={{ background: accentColor }} />
         <div className={styles.cardBody}>
@@ -177,7 +173,7 @@ export default function SharedCardPage() {
           Build your own habits
         </Link>
       </div>
-    </div>
+    </main>
   );
 }
 

@@ -3,5 +3,9 @@ Allow: /
 Disallow: /profile
 Disallow: /auth
 Disallow: /s/
+Disallow: /progress
+Disallow: /achievements
+Disallow: /forgot-password
+Disallow: /reset-password
 
-Sitemap: https://100dayshabitclub.vercel.app/sitemap.xml
+Sitemap: https://www.100dayshabitclub.xyz/sitemap.xml

@@ -1,5 +1,8 @@
 import { useMemo } from 'react';
 import { Link } from 'react-router-dom';
+import { useDocumentMeta } from '../../hooks/useDocumentMeta.js';
+import Breadcrumb from '../../components/Breadcrumb/Breadcrumb.jsx';
+import Footer from '../../components/Footer/Footer.jsx';
 import { loadData } from '../../utils/storage.js';
 import { computeAchievements, getAchievementCategories } from '../../utils/analytics.js';
 import styles from './AchievementsPage.module.css';
@@ -29,6 +32,12 @@ const ICONS = {
 };
 
 export default function AchievementsPage() {
+  useDocumentMeta({
+    title: 'Achievements',
+    description: 'View your habit tracking milestones and achievements.',
+    path: '/achievements',
+    noindex: true,
+  });
   const data = useMemo(() => loadData(), []);
   const habits = data.habits || [];
 
@@ -39,8 +48,8 @@ export default function AchievementsPage() {
   const totalCount = achievements.length;
 
   return (
-    <div className={styles.page}>
-      <div className={styles.container}>
+    <div className={styles.page} style={{ display: 'flex', flexDirection: 'column' }}>
+      <main className={styles.container} style={{ flex: 1 }}>
         <div className={styles.header}>
           <Link to="/" className={styles.backBtn}>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -53,7 +62,8 @@ export default function AchievementsPage() {
           </span>
         </div>
 
-        <h2 className={styles.pageTitle}>Achievements</h2>
+        <Breadcrumb items={[{ label: 'Home', path: '/' }, { label: 'Achievements' }]} />
+        <h1 className={styles.pageTitle}>Achievements</h1>
         <p className={styles.subtitle}>
           {totalUnlocked} of {totalCount} unlocked
         </p>
@@ -134,7 +144,8 @@ export default function AchievementsPage() {
             View Progress
           </Link>
         </div>
-      </div>
+      </main>
+      <Footer />
     </div>
   );
 }

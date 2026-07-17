@@ -3,26 +3,27 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
-    <title>100 Days Habit Club</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>100 Days Habit Club — Build Lasting Habits</title>
 
     <!-- SEO -->
-    <meta name="description" content="Build lasting habits in 100 days. Track your progress with a beautiful grid, streaks, and milestones. No sign-up, no data leaves your device." />
+    <meta name="description" content="Build any habit in 100 days. Free habit tracker with streaks, progress grid, and milestones. Works offline, syncs across devices." />
     <meta name="theme-color" content="#080A10" />
-    <link rel="canonical" href="https://100dayshabitclub.vercel.app" />
+    <link rel="canonical" href="https://www.100dayshabitclub.xyz" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="100 Days Habit Club" />
-    <meta property="og:description" content="Build lasting habits in 100 days. Track your progress with a beautiful grid, streaks, and milestones." />
-    <meta property="og:image" content="https://100dayshabitclub.vercel.app/og-image.png" />
-    <meta property="og:url" content="https://100dayshabitclub.vercel.app" />
+    <meta property="og:site_name" content="100 Days Habit Club" />
+    <meta property="og:title" content="100 Days Habit Club — Build Lasting Habits" />
+    <meta property="og:description" content="Build any habit in 100 days. Free habit tracker with streaks, progress grid, and milestones." />
+    <meta property="og:image" content="https://www.100dayshabitclub.xyz/og-image.png" />
+    <meta property="og:url" content="https://www.100dayshabitclub.xyz" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="100 Days Habit Club" />
-    <meta name="twitter:description" content="Build lasting habits in 100 days. Track your progress with a beautiful grid, streaks, and milestones." />
-    <meta name="twitter:image" content="https://100dayshabitclub.vercel.app/og-image.png" />
+    <meta name="twitter:title" content="100 Days Habit Club — Build Lasting Habits" />
+    <meta name="twitter:description" content="Build any habit in 100 days. Free habit tracker with streaks, progress grid, and milestones." />
+    <meta name="twitter:image" content="https://www.100dayshabitclub.xyz/og-image.png" />
 
     <!-- Apple -->
     <link rel="apple-touch-icon" href="/apple-touch-icon-180x180.png" />
@@ -33,22 +34,54 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "100 Days Habit Club",
-      "description": "Build lasting habits in 100 days. Track your progress with a beautiful grid, streaks, and milestones.",
-      "url": "https://100dayshabitclub.vercel.app",
-      "applicationCategory": "LifestyleApplication",
-      "operatingSystem": "Web, Android",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      }
+      "@graph": [
+        {
+          "@type": "Organization",
+          "name": "100 Days Habit Club",
+          "url": "https://www.100dayshabitclub.xyz",
+          "logo": "https://www.100dayshabitclub.xyz/pwa-512x512.png"
+        },
+        {
+          "@type": "WebSite",
+          "name": "100 Days Habit Club",
+          "url": "https://www.100dayshabitclub.xyz"
+        },
+        {
+          "@type": "WebApplication",
+          "name": "100 Days Habit Club",
+          "description": "Build any habit in 100 days. Free habit tracker with streaks, progress grid, and milestones.",
+          "url": "https://www.100dayshabitclub.xyz",
+          "applicationCategory": "LifestyleApplication",
+          "operatingSystem": "Web, Android",
+          "screenshot": "https://www.100dayshabitclub.xyz/og-image.png",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          }
+        }
+      ]
     }
     </script>
   </head>
   <body>
     <div id="root"></div>
+    <noscript>
+      <h1>100 Days Habit Club</h1>
+      <p>Build any habit in 100 days. Free habit tracker with streaks, progress grid, and milestones.</p>
+      <h2>How It Works</h2>
+      <ol>
+        <li>Pick a habit you want to build</li>
+        <li>Show up daily and check in with one tap</li>
+        <li>Watch your grid fill up over 100 days</li>
+      </ol>
+      <h2>Popular Habits</h2>
+      <p>Morning Meditation, Read 30 Minutes, Daily Journaling, Run for 20 Minutes, Drink 8 Glasses of Water, Code for 1 Hour, Daily Prayer, Wake Up at 6 AM</p>
+      <nav>
+        <p><a href="/habits">Habit Library</a> | <a href="/challenges">Challenges</a> | <a href="/guides">Guides</a> | <a href="/blog">Blog</a> | <a href="/methodology">Methodology</a> | <a href="/resources">Resources</a> | <a href="/about">About</a> | <a href="/faq">FAQ</a></p>
+        <p><a href="/login">Log In</a> | <a href="/signup">Sign Up</a></p>
+      </nav>
+    </noscript>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

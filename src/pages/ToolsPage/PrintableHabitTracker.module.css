@@ -1,0 +1,132 @@
+/* Printable tracker grid */
+.trackerGrid {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 4px;
+  margin-bottom: var(--space-lg);
+}
+
+.gridCell {
+  aspect-ratio: 1;
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  background: var(--color-bg);
+}
+
+.trackerTitle {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: var(--space-sm);
+}
+
+.trackerSubtitle {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-lg);
+}
+
+.printBtnWrap {
+  text-align: center;
+  margin-bottom: var(--space-xl);
+}
+
+.printBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-xl);
+  border-radius: var(--radius-md);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1rem;
+  background: var(--color-primary);
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background var(--transition-fast), transform var(--transition-fast);
+}
+
+@media (hover: hover) {
+  .printBtn:hover {
+    background: var(--color-primary-hover);
+    transform: translateY(-1px);
+  }
+}
+
+.printBtn:active {
+  transform: scale(0.97);
+}
+
+/* Print-specific styles */
+@media print {
+  /* Hide everything on the page */
+  body > * {
+    display: none !important;
+  }
+
+  /* Show only the printable area */
+  .printArea,
+  .printArea * {
+    display: revert !important;
+  }
+
+  /* Make printArea visible through the DOM */
+  body,
+  body > div,
+  body > div > div,
+  body > div > div > div,
+  body > div > div > div > main {
+    display: block !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: white !important;
+  }
+
+  .printArea {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: white !important;
+    padding: 2rem !important;
+    z-index: 99999;
+  }
+
+  .trackerTitle {
+    color: #000 !important;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .trackerSubtitle {
+    color: #444 !important;
+    margin-bottom: 1.5rem;
+  }
+
+  .trackerGrid {
+    gap: 3px;
+    max-width: 500px;
+    margin: 0 auto 1rem auto;
+  }
+
+  .gridCell {
+    border: 2px solid #333 !important;
+    border-radius: 2px;
+    color: #666 !important;
+    background: white !important;
+  }
+
+  .printBtnWrap {
+    display: none !important;
+  }
+}

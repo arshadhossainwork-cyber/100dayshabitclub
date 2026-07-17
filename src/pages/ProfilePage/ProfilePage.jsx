@@ -2,12 +2,20 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext.jsx';
 import { useToast } from '../../hooks/useToast.jsx';
+import { useDocumentMeta } from '../../hooks/useDocumentMeta.js';
+import Breadcrumb from '../../components/Breadcrumb/Breadcrumb.jsx';
 import { exportData } from '../../utils/storage.js';
 import { getToday } from '../../utils/dates.js';
 import ConfirmDialog from '../../components/ConfirmDialog/ConfirmDialog.jsx';
 import styles from './ProfilePage.module.css';
 
 export default function ProfilePage() {
+  useDocumentMeta({
+    title: 'Profile',
+    description: 'Manage your 100 Days Habit Club account, preferences, and data.',
+    path: '/profile',
+    noindex: true,
+  });
   const { user, signOut, updateProfile, deleteAccount } = useAuth();
   const { showToast } = useToast();
   const navigate = useNavigate();
@@ -100,7 +108,7 @@ export default function ProfilePage() {
 
   return (
     <div className={styles.page}>
-      <div className={styles.container}>
+      <main className={styles.container}>
         <div className={styles.header}>
           <Link to="/" className={styles.backBtn}>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -112,6 +120,9 @@ export default function ProfilePage() {
             <span className={styles.headerAccent}>100</span> Days
           </span>
         </div>
+
+        <Breadcrumb items={[{ label: 'Home', path: '/' }, { label: 'Profile' }]} />
+        <h1 className={styles.pageTitle}>Profile</h1>
 
         <div className={styles.profile}>
           {avatarUrl ? (
@@ -215,7 +226,7 @@ export default function ProfilePage() {
             Delete Account
           </button>
         </div>
-      </div>
+      </main>
 
       <ConfirmDialog
         open={deleteOpen}

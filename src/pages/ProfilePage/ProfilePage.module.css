@@ -9,6 +9,13 @@
   margin: 0 auto;
 }
 
+.pageTitle {
+  font-family: var(--font-display);
+  font-size: var(--text-heading);
+  font-weight: 800;
+  margin-bottom: var(--space-lg);
+}
+
 .header {
   display: flex;
   align-items: center;

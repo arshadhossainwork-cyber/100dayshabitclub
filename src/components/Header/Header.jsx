@@ -36,16 +36,16 @@ export default function Header({
           <div className={styles.logoMark} aria-hidden="true">
             <span /><span /><span /><span />
           </div>
-          <h1 className={styles.title}>
+          <span className={styles.title}>
             <span className={styles.titleAccent}>100</span> Days
-          </h1>
+          </span>
         </Link>
 
         {isLanding && (
           <nav className={styles.nav} aria-label="Page navigation">
-            <a href="#product-demo" className={styles.navLink}>Product</a>
-            <a href="#popular-habits" className={styles.navLink}>Habits</a>
-            <a href="#how-it-works" className={styles.navLink}>How it works</a>
+            <Link to="/habits" className={styles.navLink}>Habits</Link>
+            <Link to="/challenges" className={styles.navLink}>Challenges</Link>
+            <Link to="/methodology" className={styles.navLink}>Method</Link>
           </nav>
         )}
 
