@@ -7,19 +7,22 @@ export default function HabitList({
   onEdit,
   onArchive,
   onDelete,
+  showToast,
 }) {
   return (
-    <div className={styles.list}>
+    <ul className={styles.list} aria-label="Your habits">
       {habits.map((habit) => (
-        <HabitCard
-          key={habit.id}
-          habit={habit}
-          onToggle={onToggle}
-          onEdit={onEdit}
-          onArchive={onArchive}
-          onDelete={onDelete}
-        />
+        <li key={habit.id}>
+          <HabitCard
+            habit={habit}
+            onToggle={onToggle}
+            onEdit={onEdit}
+            onArchive={onArchive}
+            onDelete={onDelete}
+            showToast={showToast}
+          />
+        </li>
       ))}
-    </div>
+    </ul>
   );
 }

@@ -54,6 +54,11 @@
   }
 }
 
+.cancelBtn:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
 .confirmBtn {
   padding: var(--space-sm) var(--space-lg);
   border-radius: var(--radius-md);
@@ -64,11 +69,22 @@
   transition: background var(--transition-fast), transform var(--transition-fast);
 }
 
+.confirmBtn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+}
+
 @media (hover: hover) {
-  .confirmBtn:hover {
+  .confirmBtn:hover:not(:disabled) {
     background: var(--color-danger-hover);
     transform: translateY(-1px);
   }
+}
+
+.confirmBtn:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
 }
 
 @keyframes scaleIn {

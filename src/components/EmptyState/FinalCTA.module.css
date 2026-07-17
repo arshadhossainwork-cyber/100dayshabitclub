@@ -125,9 +125,25 @@
 }
 
 /* Reveal */
+.privacyLink {
+  margin-top: var(--space-md);
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color var(--transition-fast);
+}
+
+@media (hover: hover) {
+  .privacyLink:hover {
+    color: var(--color-text-secondary);
+  }
+}
+
 .visible .content > *:nth-child(1) { animation: revealUp 0.6s var(--ease-out-expo) 0ms both; }
 .visible .content > *:nth-child(2) { animation: revealUp 0.6s var(--ease-out-expo) 100ms both; }
 .visible .content > *:nth-child(3) { animation: revealUp 0.6s var(--ease-out-expo) 200ms both; }
+.visible .content > *:nth-child(4) { animation: revealUp 0.6s var(--ease-out-expo) 300ms both; }
 
 @keyframes revealUp {
   from { opacity: 0; transform: translateY(20px); }

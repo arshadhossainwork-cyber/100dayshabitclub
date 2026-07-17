@@ -1,16 +1,29 @@
 .banner {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-sm);
   padding: var(--space-sm) var(--space-md);
   background: var(--color-warning-light);
   border-bottom: 1px solid rgba(245, 158, 11, 0.25);
   font-family: var(--font-display);
   font-size: 0.875rem;
-  font-weight: 600;
   color: var(--color-warning);
   animation: slideDown var(--transition-normal);
+}
+
+.urgent {
+  background: rgba(239, 68, 68, 0.1);
+  border-bottom-color: rgba(239, 68, 68, 0.25);
+  color: var(--color-danger);
+}
+
+.headerRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
 }
 
 .icon {
@@ -19,7 +32,134 @@
 }
 
 .text {
+  font-weight: 600;
   line-height: 1;
+}
+
+.collapseBtn {
+  font-size: 0.7rem;
+  padding: var(--space-xs);
+  color: inherit;
+  opacity: 0.7;
+  transition: opacity var(--transition-fast);
+}
+
+@media (hover: hover) {
+  .collapseBtn:hover {
+    opacity: 1;
+  }
+}
+
+.habitList {
+  margin-top: var(--space-sm);
+}
+
+.habitRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-xs) 0;
+}
+
+.habitDot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-full);
+  flex-shrink: 0;
+}
+
+.habitName {
+  flex: 1;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--color-text);
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.habitNameMuted {
+  composes: habitName;
+  color: var(--color-text-muted);
+}
+
+.snoozeUntil {
+  font-size: 0.75rem;
+  font-weight: 400;
+}
+
+.habitActions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  flex-shrink: 0;
+}
+
+.doneBtn {
+  padding: 2px var(--space-sm);
+  border-radius: var(--radius-sm);
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: var(--color-primary);
+  color: white;
+  transition: background var(--transition-fast);
+}
+
+@media (hover: hover) {
+  .doneBtn:hover {
+    background: var(--color-primary-hover);
+  }
+}
+
+.snoozeWrapper {
+  position: relative;
+}
+
+.snoozeBtn {
+  padding: 2px var(--space-sm);
+  border-radius: var(--radius-sm);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  border: 1px solid var(--color-border);
+  transition: background var(--transition-fast);
+}
+
+@media (hover: hover) {
+  .snoozeBtn:hover {
+    background: var(--color-surface-elevated);
+  }
+}
+
+.snoozedSection {
+  margin-top: var(--space-sm);
+  padding-top: var(--space-sm);
+  border-top: 1px solid var(--color-border);
+}
+
+.snoozedHeader {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-xs);
+}
+
+.unsnoozeBtn {
+  padding: 2px var(--space-sm);
+  border-radius: var(--radius-sm);
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-border);
+  transition: all var(--transition-fast);
+}
+
+@media (hover: hover) {
+  .unsnoozeBtn:hover {
+    background: var(--color-surface-elevated);
+    color: var(--color-text-secondary);
+  }
 }
 
 @keyframes slideDown {

@@ -1,10 +1,14 @@
+import { useState } from 'react';
 import useIntersectionReveal from '../../hooks/useIntersectionReveal';
+import PrivacyPolicy from '../PrivacyPolicy/PrivacyPolicy.jsx';
 import styles from './FinalCTA.module.css';
 
 export default function FinalCTA({ onAddClick }) {
   const [ref, isVisible] = useIntersectionReveal({ threshold: 0.3 });
+  const [privacyOpen, setPrivacyOpen] = useState(false);
 
   return (
+    <>
     <section className={`${styles.section} ${isVisible ? styles.visible : ''}`} ref={ref} aria-label="Get started">
       <div className={styles.glow1} aria-hidden="true" />
       <div className={styles.glow2} aria-hidden="true" />
@@ -16,7 +20,7 @@ export default function FinalCTA({ onAddClick }) {
         </h3>
 
         <p className={styles.subtitle}>
-          No sign-up. No subscription. No data leaves your device.
+          Free forever. No subscription. Your data stays on your device.
         </p>
 
         <button className={styles.cta} onClick={onAddClick}>
@@ -25,7 +29,16 @@ export default function FinalCTA({ onAddClick }) {
             <path d="M5 12h14M12 5l7 7-7 7" />
           </svg>
         </button>
+
+        <button
+          className={styles.privacyLink}
+          onClick={() => setPrivacyOpen(true)}
+        >
+          Privacy Policy
+        </button>
       </div>
     </section>
+    <PrivacyPolicy open={privacyOpen} onClose={() => setPrivacyOpen(false)} />
+    </>
   );
 }

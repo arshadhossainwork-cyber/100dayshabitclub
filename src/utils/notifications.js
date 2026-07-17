@@ -1,5 +1,6 @@
 import { Capacitor } from '@capacitor/core';
 import { LocalNotifications } from '@capacitor/local-notifications';
+import { NOTIFICATION_IDS } from './constants.js';
 
 const isNative = Capacitor.isNativePlatform();
 
@@ -60,13 +61,21 @@ export async function sendNotification(title, options = {}) {
   });
 }
 
-export async function scheduleNotification(title, body, hour, minute) {
+// Simple hash to generate deterministic notification IDs for per-habit notifications
+function hashId(str) {
+  let hash = 0;
+  for (let i = 0; i < str.length; i++) {
+    hash = ((hash << 5) - hash + str.charCodeAt(i)) | 0;
+  }
+  return Math.abs(hash) % 10000;
+}
+
+export async function scheduleNotification(title, body, hour, minute, notificationId) {
   if (!isNative) return null;
 
   const perm = await getPermissionStatus();
   if (perm !== 'granted') return null;
 
-  // Build the next occurrence of the target time
   const now = new Date();
   const scheduled = new Date();
   scheduled.setHours(hour, minute, 0, 0);
@@ -74,11 +83,10 @@ export async function scheduleNotification(title, body, hour, minute) {
     scheduled.setDate(scheduled.getDate() + 1);
   }
 
-  const REMINDER_NOTIFICATION_ID = 100;
+  const id = notificationId ?? NOTIFICATION_IDS.GLOBAL;
 
-  // Cancel any existing reminder first
   await LocalNotifications.cancel({
-    notifications: [{ id: REMINDER_NOTIFICATION_ID }],
+    notifications: [{ id }],
   });
 
   await LocalNotifications.schedule({
@@ -86,7 +94,7 @@ export async function scheduleNotification(title, body, hour, minute) {
       {
         title,
         body,
-        id: REMINDER_NOTIFICATION_ID,
+        id,
         schedule: {
           at: scheduled,
           every: 'day',
@@ -97,15 +105,46 @@ export async function scheduleNotification(title, body, hour, minute) {
     ],
   });
 
-  return REMINDER_NOTIFICATION_ID;
+  return id;
+}
+
+export async function scheduleHabitNotification(habitId, title, body, hour, minute) {
+  const id = NOTIFICATION_IDS.HABIT_BASE + hashId(habitId);
+  return scheduleNotification(title, body, hour, minute, id);
+}
+
+export async function cancelHabitNotification(habitId) {
+  if (!isNative) return;
+  const id = NOTIFICATION_IDS.HABIT_BASE + hashId(habitId);
+  await LocalNotifications.cancel({
+    notifications: [{ id }],
+  });
 }
 
 export async function cancelScheduledNotification() {
   if (!isNative) return;
-  const REMINDER_NOTIFICATION_ID = 100;
   await LocalNotifications.cancel({
-    notifications: [{ id: REMINDER_NOTIFICATION_ID }],
+    notifications: [{ id: NOTIFICATION_IDS.GLOBAL }],
   });
+}
+
+export async function cancelAllScheduledNotifications() {
+  if (!isNative) return;
+  try {
+    const { notifications } = await LocalNotifications.getPending();
+    if (notifications.length > 0) {
+      await LocalNotifications.cancel({ notifications: notifications.map((n) => ({ id: n.id })) });
+    }
+  } catch {
+    // Fallback: cancel known IDs
+    await LocalNotifications.cancel({
+      notifications: [
+        { id: NOTIFICATION_IDS.GLOBAL },
+        { id: NOTIFICATION_IDS.DAILY_SUMMARY },
+        { id: NOTIFICATION_IDS.MILESTONE },
+      ],
+    });
+  }
 }
 
 export { isNative };

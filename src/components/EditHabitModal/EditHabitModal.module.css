@@ -155,6 +155,22 @@
   transform: scale(0.97);
 }
 
+.validationError {
+  font-size: 0.8rem;
+  color: var(--color-danger);
+  margin-top: var(--space-xs);
+}
+
+.validationWarning {
+  font-size: 0.8rem;
+  color: var(--color-warning);
+  margin-top: var(--space-xs);
+}
+
+.reminderSection {
+  margin-bottom: var(--space-lg);
+}
+
 @keyframes scaleIn {
   from {
     opacity: 0;

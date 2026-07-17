@@ -42,6 +42,11 @@
   }
 }
 
+.closeBtn:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
 .section {
   padding: var(--space-md) 0;
   border-bottom: 1px solid var(--color-border);
@@ -143,6 +148,7 @@
 .timeInput:focus {
   outline: none;
   border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
 }
 
 .permissionBtn {
@@ -152,6 +158,7 @@
   font-size: 0.85rem;
   background: var(--color-primary);
   color: white;
+  text-decoration: none;
   transition: background var(--transition-fast);
 }
 
@@ -159,6 +166,11 @@
   .permissionBtn:hover {
     background: var(--color-primary-hover);
   }
+}
+
+.permissionBtn:focus-visible {
+  outline: 2px solid white;
+  outline-offset: 2px;
 }
 
 .permissionStatus {
@@ -173,6 +185,245 @@
 
 .denied {
   color: var(--color-danger);
+}
+
+.footer {
+  padding-top: var(--space-md);
+  text-align: center;
+}
+
+.privacyLink {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color var(--transition-fast);
+}
+
+@media (hover: hover) {
+  .privacyLink:hover {
+    color: var(--color-text-secondary);
+  }
+}
+
+.dataSection {
+  padding: var(--space-md) 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.dataSectionTitle {
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-bottom: var(--space-sm);
+}
+
+.dataActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+.dataBtn {
+  flex: 1;
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: 0.85rem;
+  border: 1px solid var(--color-border);
+  color: var(--color-text-secondary);
+  transition: background var(--transition-fast);
+}
+
+@media (hover: hover) {
+  .dataBtn:hover:not(:disabled) {
+    background: var(--color-surface-elevated);
+  }
+}
+
+.dataBtn:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.resetBtn {
+  width: 100%;
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: 0.85rem;
+  border: 1px solid var(--color-danger);
+  color: var(--color-danger);
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+@media (hover: hover) {
+  .resetBtn:hover {
+    background: var(--color-danger);
+    color: white;
+  }
+}
+
+.resetBtn:focus-visible {
+  outline: 2px solid var(--color-danger);
+  outline-offset: 2px;
+}
+
+.resetInput {
+  width: 100%;
+  padding: var(--space-xs) var(--space-sm);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  background: var(--color-bg);
+  color: var(--color-text);
+  text-align: center;
+  letter-spacing: 2px;
+  margin-bottom: var(--space-md);
+  box-sizing: border-box;
+}
+
+.resetInput:focus {
+  outline: none;
+  border-color: var(--color-danger);
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2);
+}
+
+.syncStatus {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-sm);
+  line-height: 1.4;
+}
+
+.syncTime {
+  font-weight: 600;
+  color: var(--color-text-secondary);
+}
+
+.syncActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+}
+
+.disconnectBtn {
+  flex: 1;
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: 0.85rem;
+  border: 1px solid var(--color-text-muted);
+  color: var(--color-text-muted);
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+@media (hover: hover) {
+  .disconnectBtn:hover {
+    background: var(--color-surface-elevated);
+    color: var(--color-text-secondary);
+  }
+}
+
+.dataBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.subRow {
+  padding-left: var(--space-md);
+  margin-top: var(--space-sm);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.linkBtn {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color var(--transition-fast);
+}
+
+@media (hover: hover) {
+  .linkBtn:hover {
+    color: var(--color-primary-hover);
+  }
+}
+
+.tzActions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  align-items: flex-end;
+}
+
+.browserNote {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  padding: var(--space-sm) 0;
+  line-height: 1.4;
+  border-top: 1px solid var(--color-border);
+}
+
+.installStatus {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+.installCheck {
+  color: var(--color-success);
+  font-weight: 700;
+  margin-right: 4px;
+}
+
+.installBtn {
+  width: 100%;
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-md);
+  font-weight: 700;
+  font-size: 0.9rem;
+  background: var(--color-primary);
+  color: white;
+  transition: background var(--transition-fast);
+}
+
+@media (hover: hover) {
+  .installBtn:hover {
+    background: var(--color-primary-hover);
+  }
+}
+
+.installBtn:focus-visible {
+  outline: 2px solid white;
+  outline-offset: 2px;
+}
+
+.disconnectBtn:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.privacyLink:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.linkBtn:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.shareIcon {
+  display: inline-block;
+  border: 1px solid currentColor;
+  border-radius: 3px;
+  padding: 0 3px;
+  font-size: 0.75rem;
+  line-height: 1.4;
 }
 
 @keyframes scaleIn {

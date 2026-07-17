@@ -1,0 +1,92 @@
+.container {
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-lg);
+  background: var(--color-bg);
+}
+
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  max-width: 400px;
+  width: 100%;
+  box-shadow: var(--shadow-xl);
+  animation: scaleIn var(--transition-normal);
+}
+
+.logoLink {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  text-decoration: none;
+  margin-bottom: var(--space-lg);
+  width: fit-content;
+}
+
+.logoMark {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  width: 20px;
+  height: 20px;
+}
+
+.logoMark span {
+  border-radius: 2px;
+  background: var(--color-primary);
+}
+
+.logoMark span:nth-child(2) {
+  background: var(--color-cyan);
+}
+
+.logoMark span:nth-child(3) {
+  background: var(--color-indigo);
+}
+
+.logoMark span:nth-child(4) {
+  background: var(--color-primary);
+  opacity: 0.5;
+}
+
+.logoText {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.logoAccent {
+  color: var(--color-primary);
+  font-weight: 800;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: var(--space-xs);
+}
+
+.subtitle {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+  margin-bottom: var(--space-lg);
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

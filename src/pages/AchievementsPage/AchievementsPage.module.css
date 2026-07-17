@@ -1,0 +1,264 @@
+.page {
+  min-height: 100dvh;
+  background: var(--color-bg);
+  padding: var(--space-lg);
+  padding-bottom: var(--space-3xl);
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-xl);
+}
+
+.backBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color var(--transition-fast);
+}
+
+@media (hover: hover) {
+  .backBtn:hover {
+    color: var(--color-text);
+  }
+}
+
+.headerTitle {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.headerAccent {
+  color: var(--color-primary);
+  font-weight: 800;
+}
+
+.pageTitle {
+  font-family: var(--font-display);
+  font-size: var(--text-heading);
+  font-weight: 800;
+  margin-bottom: var(--space-xs);
+}
+
+.subtitle {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  margin-bottom: var(--space-lg);
+}
+
+/* ─── Progress Ring ───────────────────────────────────── */
+
+.progressRing {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  margin: 0 auto var(--space-xl);
+}
+
+.ringSvg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.ringTrack {
+  fill: none;
+  stroke: var(--color-border);
+  stroke-width: 8;
+}
+
+.ringFill {
+  fill: none;
+  stroke: var(--color-primary);
+  stroke-width: 8;
+  stroke-linecap: round;
+  transition: stroke-dashoffset var(--transition-smooth);
+}
+
+.ringLabel {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ringValue {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+
+/* ─── Category ────────────────────────────────────────── */
+
+.category {
+  margin-bottom: var(--space-xl);
+}
+
+.categoryHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-md);
+}
+
+.categoryName {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.categoryCount {
+  font-size: var(--text-caption);
+  color: var(--color-text-muted);
+}
+
+.achievementGrid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+/* ─── Achievement Card ────────────────────────────────── */
+
+.achievementCard {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-md);
+  padding: var(--space-md);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  transition: border-color var(--transition-fast);
+}
+
+.achievementCard.unlocked {
+  border-color: var(--color-primary-dim);
+}
+
+.achievementCard.locked {
+  opacity: 0.6;
+}
+
+.achievementIcon {
+  font-size: 1.5rem;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bg);
+  border-radius: var(--radius-sm);
+  flex-shrink: 0;
+}
+
+.unlocked .achievementIcon {
+  background: var(--color-primary-dim);
+}
+
+.achievementInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.achievementName {
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 2px;
+}
+
+.achievementDesc {
+  font-size: var(--text-caption);
+  color: var(--color-text-muted);
+  line-height: 1.4;
+}
+
+.relatedHabit {
+  font-size: 0.65rem;
+  color: var(--color-primary);
+  margin-top: 2px;
+}
+
+.progressBar {
+  height: 4px;
+  background: var(--color-bg);
+  border-radius: var(--radius-full);
+  margin-top: var(--space-sm);
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: var(--color-primary);
+  border-radius: var(--radius-full);
+  transition: width var(--transition-smooth);
+}
+
+.progressText {
+  font-size: 0.65rem;
+  color: var(--color-text-muted);
+  margin-top: 2px;
+}
+
+/* ─── Nav ─────────────────────────────────────────────── */
+
+.navLink {
+  text-align: center;
+  padding: var(--space-lg) 0;
+}
+
+.navBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-lg);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: background var(--transition-fast), border-color var(--transition-fast);
+}
+
+@media (hover: hover) {
+  .navBtn:hover {
+    background: var(--color-surface-elevated);
+    border-color: var(--color-primary);
+  }
+}
+
+/* ─── Responsive ──────────────────────────────────────── */
+
+@media (max-width: 480px) {
+  .page {
+    padding: var(--space-md);
+    padding-bottom: var(--space-2xl);
+  }
+
+  .achievementCard {
+    padding: var(--space-sm) var(--space-md);
+  }
+
+  .achievementIcon {
+    width: 36px;
+    height: 36px;
+    font-size: 1.25rem;
+  }
+}

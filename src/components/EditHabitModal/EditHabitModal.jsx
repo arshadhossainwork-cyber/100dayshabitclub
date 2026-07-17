@@ -1,17 +1,35 @@
 import { useState, useRef, useEffect } from 'react';
 import { HABIT_COLORS } from '../../utils/constants.js';
+import HabitReminderSettings from '../HabitReminderSettings/HabitReminderSettings.jsx';
 import styles from './EditHabitModal.module.css';
 
-export default function EditHabitModal({ habit, open, onClose, onSave }) {
+export default function EditHabitModal({ habit, open, onClose, onSave, existingNames = [], globalReminderTime = '09:00' }) {
   const [name, setName] = useState('');
   const [color, setColor] = useState('');
+  const [touched, setTouched] = useState(false);
+  const [reminderEnabled, setReminderEnabled] = useState(false);
+  const [reminderTime, setReminderTime] = useState(null);
+  const [reminderDays, setReminderDays] = useState(null);
+  const [reminderMessage, setReminderMessage] = useState(null);
   const dialogRef = useRef(null);
   const inputRef = useRef(null);
+
+  const trimmed = name.trim();
+  const tooShort = touched && trimmed.length > 0 && trimmed.length < 2;
+  const isDuplicate = existingNames.some(
+    (n) => n.toLowerCase() === trimmed.toLowerCase() && n.toLowerCase() !== (habit?.name || '').toLowerCase()
+  );
+  const isValid = trimmed.length >= 2;
 
   useEffect(() => {
     if (habit) {
       setName(habit.name);
       setColor(habit.color);
+      setTouched(false);
+      setReminderEnabled(habit.reminderEnabled || false);
+      setReminderTime(habit.reminderTime || null);
+      setReminderDays(habit.reminderDays || null);
+      setReminderMessage(habit.reminderMessage || null);
     }
   }, [habit]);
 
@@ -27,11 +45,24 @@ export default function EditHabitModal({ habit, open, onClose, onSave }) {
     }
   }, [open]);
 
+  function handleReminderChange(updates) {
+    if ('reminderEnabled' in updates) setReminderEnabled(updates.reminderEnabled);
+    if ('reminderTime' in updates) setReminderTime(updates.reminderTime);
+    if ('reminderDays' in updates) setReminderDays(updates.reminderDays);
+    if ('reminderMessage' in updates) setReminderMessage(updates.reminderMessage);
+  }
+
   function handleSubmit(e) {
     e.preventDefault();
-    const trimmed = name.trim();
-    if (!trimmed || !habit) return;
-    onSave(habit.id, { name: trimmed, color });
+    if (!isValid || !habit) return;
+    onSave(habit.id, {
+      name: trimmed,
+      color,
+      reminderEnabled,
+      reminderTime,
+      reminderDays,
+      reminderMessage,
+    });
     onClose();
   }
 
@@ -65,9 +96,21 @@ export default function EditHabitModal({ habit, open, onClose, onSave }) {
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
+              onBlur={() => setTouched(true)}
               maxLength={100}
               required
+              aria-describedby={tooShort || isDuplicate ? 'edit-habit-name-hint' : undefined}
             />
+            {tooShort && (
+              <p id="edit-habit-name-hint" className={styles.validationError}>
+                Name must be at least 2 characters
+              </p>
+            )}
+            {isDuplicate && (
+              <p id="edit-habit-name-hint" className={styles.validationWarning}>
+                You already have a habit with this name
+              </p>
+            )}
           </div>
 
           <div className={styles.field}>
@@ -90,6 +133,17 @@ export default function EditHabitModal({ habit, open, onClose, onSave }) {
             </div>
           </div>
 
+          <div className={styles.reminderSection}>
+            <HabitReminderSettings
+              reminderEnabled={reminderEnabled}
+              reminderTime={reminderTime}
+              reminderDays={reminderDays}
+              reminderMessage={reminderMessage}
+              globalReminderTime={globalReminderTime}
+              onChange={handleReminderChange}
+            />
+          </div>
+
           <div className={styles.actions}>
             <button
               type="button"
@@ -101,7 +155,7 @@ export default function EditHabitModal({ habit, open, onClose, onSave }) {
             <button
               type="submit"
               className={styles.submitBtn}
-              disabled={!name.trim()}
+              disabled={!isValid}
             >
               Save Changes
             </button>

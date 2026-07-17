@@ -1,0 +1,98 @@
+.section {
+  padding: var(--space-md) 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.sectionTitle {
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-bottom: var(--space-sm);
+}
+
+.empty {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  padding: var(--space-xs) 0;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  padding: var(--space-sm) 0;
+}
+
+.item + .item {
+  border-top: 1px solid var(--color-border);
+}
+
+.habitInfo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  min-width: 0;
+  flex: 1;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: var(--radius-full);
+  flex-shrink: 0;
+}
+
+.name {
+  font-size: 0.85rem;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.count {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  flex-shrink: 0;
+}
+
+.actions {
+  display: flex;
+  gap: var(--space-xs);
+  flex-shrink: 0;
+}
+
+.restoreBtn,
+.deleteBtn {
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 0.75rem;
+  transition: background var(--transition-fast);
+}
+
+.restoreBtn {
+  border: 1px solid var(--color-border);
+  color: var(--color-text-secondary);
+}
+
+.deleteBtn {
+  border: 1px solid var(--color-danger);
+  color: var(--color-danger);
+}
+
+@media (hover: hover) {
+  .restoreBtn:hover {
+    background: var(--color-surface-elevated);
+  }
+
+  .deleteBtn:hover {
+    background: rgba(239, 68, 68, 0.1);
+  }
+}

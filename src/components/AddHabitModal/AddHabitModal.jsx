@@ -2,11 +2,19 @@ import { useState, useRef, useEffect } from 'react';
 import { HABIT_COLORS } from '../../utils/constants.js';
 import styles from './AddHabitModal.module.css';
 
-export default function AddHabitModal({ open, onClose, onAdd }) {
+export default function AddHabitModal({ open, onClose, onAdd, existingNames = [] }) {
   const [name, setName] = useState('');
   const [color, setColor] = useState(HABIT_COLORS[0].value);
+  const [touched, setTouched] = useState(false);
   const dialogRef = useRef(null);
   const inputRef = useRef(null);
+
+  const trimmed = name.trim();
+  const tooShort = touched && trimmed.length > 0 && trimmed.length < 2;
+  const isDuplicate = existingNames.some(
+    (n) => n.toLowerCase() === trimmed.toLowerCase()
+  );
+  const isValid = trimmed.length >= 2;
 
   useEffect(() => {
     const dialog = dialogRef.current;
@@ -23,17 +31,18 @@ export default function AddHabitModal({ open, onClose, onAdd }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    const trimmed = name.trim();
-    if (!trimmed) return;
+    if (!isValid) return;
     onAdd(trimmed, color);
     setName('');
     setColor(HABIT_COLORS[0].value);
+    setTouched(false);
     onClose();
   }
 
   function handleClose() {
     setName('');
     setColor(HABIT_COLORS[0].value);
+    setTouched(false);
     onClose();
   }
 
@@ -68,9 +77,21 @@ export default function AddHabitModal({ open, onClose, onAdd }) {
               placeholder="e.g. Read 30 minutes"
               value={name}
               onChange={(e) => setName(e.target.value)}
+              onBlur={() => setTouched(true)}
               maxLength={100}
               required
+              aria-describedby={tooShort || isDuplicate ? 'habit-name-hint' : undefined}
             />
+            {tooShort && (
+              <p id="habit-name-hint" className={styles.validationError}>
+                Name must be at least 2 characters
+              </p>
+            )}
+            {isDuplicate && (
+              <p id="habit-name-hint" className={styles.validationWarning}>
+                You already have a habit with this name
+              </p>
+            )}
           </div>
 
           <div className={styles.field}>
@@ -104,7 +125,7 @@ export default function AddHabitModal({ open, onClose, onAdd }) {
             <button
               type="submit"
               className={styles.submitBtn}
-              disabled={!name.trim()}
+              disabled={!isValid}
             >
               Add Habit
             </button>

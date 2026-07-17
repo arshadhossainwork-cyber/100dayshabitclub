@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import Grid from '../Grid/Grid.jsx';
 import TodayAction from '../TodayAction/TodayAction.jsx';
 import Stats from '../Stats/Stats.jsx';
+import ShareDialog from '../ShareDialog/ShareDialog.jsx';
 import styles from './HabitCard.module.css';
 
 export default function HabitCard({
@@ -10,15 +11,17 @@ export default function HabitCard({
   onEdit,
   onArchive,
   onDelete,
+  showToast,
 }) {
   const [expanded, setExpanded] = useState(true);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [shareOpen, setShareOpen] = useState(false);
   const menuRef = useRef(null);
   const completed = habit.completedDays.length;
   const isComplete = completed >= 100;
   const progressPct = Math.min(completed, 100);
 
-  // Close menu on outside click
+  // Close menu on outside click or Escape
   useEffect(() => {
     if (!menuOpen) return;
     function handleClick(e) {
@@ -26,8 +29,17 @@ export default function HabitCard({
         setMenuOpen(false);
       }
     }
+    function handleKeyDown(e) {
+      if (e.key === 'Escape') {
+        setMenuOpen(false);
+      }
+    }
     document.addEventListener('mousedown', handleClick);
-    return () => document.removeEventListener('mousedown', handleClick);
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('mousedown', handleClick);
+      document.removeEventListener('keydown', handleKeyDown);
+    };
   }, [menuOpen]);
 
   return (
@@ -62,13 +74,16 @@ export default function HabitCard({
               setMenuOpen((m) => !m);
             }}
             aria-label="Habit options"
+            aria-expanded={menuOpen}
+            aria-haspopup="menu"
           >
             &#x22EE;
           </button>
           {menuOpen && (
-            <div className={styles.menu}>
+            <div className={styles.menu} role="menu" aria-label="Habit actions">
               <button
                 className={styles.menuItem}
+                role="menuitem"
                 onClick={() => {
                   setMenuOpen(false);
                   onEdit(habit);
@@ -78,6 +93,17 @@ export default function HabitCard({
               </button>
               <button
                 className={styles.menuItem}
+                role="menuitem"
+                onClick={() => {
+                  setMenuOpen(false);
+                  setShareOpen(true);
+                }}
+              >
+                Share
+              </button>
+              <button
+                className={styles.menuItem}
+                role="menuitem"
                 onClick={() => {
                   setMenuOpen(false);
                   onArchive(habit.id);
@@ -87,6 +113,7 @@ export default function HabitCard({
               </button>
               <button
                 className={styles.menuItemDanger}
+                role="menuitem"
                 onClick={() => {
                   setMenuOpen(false);
                   onDelete(habit);
@@ -121,6 +148,14 @@ export default function HabitCard({
           )}
         </div>
       )}
+
+      <ShareDialog
+        open={shareOpen}
+        onClose={() => setShareOpen(false)}
+        habit={habit}
+        isComplete={isComplete}
+        showToast={showToast}
+      />
     </div>
   );
 }

@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /profile
+Disallow: /auth
+Disallow: /s/
+
+Sitemap: https://100dayshabitclub.vercel.app/sitemap.xml

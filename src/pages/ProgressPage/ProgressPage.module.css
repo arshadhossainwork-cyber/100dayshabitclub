@@ -1,0 +1,619 @@
+.page {
+  min-height: 100dvh;
+  background: var(--color-bg);
+  padding: var(--space-lg);
+  padding-bottom: var(--space-3xl);
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-xl);
+}
+
+.backBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color var(--transition-fast);
+}
+
+@media (hover: hover) {
+  .backBtn:hover {
+    color: var(--color-text);
+  }
+}
+
+.headerTitle {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.headerAccent {
+  color: var(--color-primary);
+  font-weight: 800;
+}
+
+.pageTitle {
+  font-family: var(--font-display);
+  font-size: var(--text-heading);
+  font-weight: 800;
+  margin-bottom: var(--space-sm);
+}
+
+.motivation {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-bottom: var(--space-xl);
+}
+
+.empty {
+  text-align: center;
+  padding: var(--space-3xl) 0;
+  color: var(--color-text-muted);
+}
+
+.startBtn {
+  display: inline-block;
+  margin-top: var(--space-md);
+  padding: var(--space-sm) var(--space-lg);
+  background: var(--color-primary);
+  color: white;
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+/* ─── Stats Grid ──────────────────────────────────────── */
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-sm);
+  margin-bottom: var(--space-xl);
+}
+
+.statCard {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  text-align: center;
+}
+
+.statValue {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--color-text);
+  line-height: 1.2;
+}
+
+.statLabel {
+  font-size: var(--text-caption);
+  color: var(--color-text-muted);
+  margin-top: 2px;
+}
+
+/* ─── Week Comparison ─────────────────────────────────── */
+
+.weekCompare {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-lg);
+  padding: var(--space-md);
+}
+
+.weekSide {
+  text-align: center;
+}
+
+.weekPct {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 800;
+}
+
+.weekLabel {
+  font-size: var(--text-caption);
+  color: var(--color-text-muted);
+}
+
+.weekDiff {
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.diffUp {
+  color: var(--color-success);
+}
+
+.diffDown {
+  color: var(--color-danger);
+}
+
+.diffFlat {
+  color: var(--color-text-muted);
+}
+
+/* ─── Highlights ──────────────────────────────────────── */
+
+.highlightsRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-xl);
+}
+
+.highlightCard {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+}
+
+.highlightLabel {
+  font-size: var(--text-caption);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+  margin-bottom: var(--space-xs);
+}
+
+.highlightName {
+  font-weight: 600;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.highlightStat {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-text-secondary);
+  margin-top: var(--space-xs);
+}
+
+.dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-full);
+  flex-shrink: 0;
+}
+
+/* ─── Section ─────────────────────────────────────────── */
+
+.section {
+  margin-bottom: var(--space-xl);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+}
+
+.sectionTitle {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--space-md);
+}
+
+/* ─── Bar Chart (vertical) ────────────────────────────── */
+
+.barChart {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--space-sm);
+  height: 140px;
+}
+
+.barCol {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+
+.barTrack {
+  flex: 1;
+  width: 100%;
+  max-width: 32px;
+  background: var(--color-bg);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+.barFill {
+  width: 100%;
+  background: var(--color-primary);
+  border-radius: var(--radius-sm);
+  min-height: 2px;
+  transition: height var(--transition-smooth);
+}
+
+.barLabel {
+  font-size: var(--text-caption);
+  color: var(--color-text-muted);
+  margin-top: var(--space-xs);
+}
+
+.barValue {
+  font-size: 0.65rem;
+  color: var(--color-text-muted);
+  margin-top: 2px;
+}
+
+/* ─── Weekday Chart (horizontal bars) ─────────────────── */
+
+.weekdayChart {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.weekdayRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.weekdayLabel {
+  width: 32px;
+  font-size: var(--text-caption);
+  color: var(--color-text-muted);
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.weekdayTrack {
+  flex: 1;
+  height: 16px;
+  background: var(--color-bg);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.weekdayFill {
+  height: 100%;
+  background: var(--color-primary);
+  border-radius: var(--radius-sm);
+  min-width: 2px;
+  transition: width var(--transition-smooth);
+}
+
+.weekdayCount {
+  width: 28px;
+  font-size: var(--text-caption);
+  color: var(--color-text-muted);
+  text-align: right;
+  flex-shrink: 0;
+}
+
+/* ─── Trend Chart (SVG line) ──────────────────────────── */
+
+.trendChart {
+  overflow: hidden;
+}
+
+.trendSvg {
+  width: 100%;
+  height: auto;
+}
+
+.gridLine {
+  stroke: var(--color-border);
+  stroke-width: 0.5;
+}
+
+.trendArea {
+  fill: var(--color-primary-dim);
+}
+
+.trendLine {
+  fill: none;
+  stroke: var(--color-primary);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.trendDot {
+  fill: var(--color-primary);
+}
+
+.trendLabels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: var(--space-xs);
+}
+
+.trendLabel {
+  font-size: 0.6rem;
+  color: var(--color-text-muted);
+  flex: 1;
+  text-align: center;
+}
+
+/* ─── Calendar Heatmap ────────────────────────────────── */
+
+.heatmap {
+  display: grid;
+  grid-template-columns: repeat(13, 1fr);
+  gap: 3px;
+}
+
+.heatmapCell {
+  aspect-ratio: 1;
+  background: var(--color-primary);
+  border-radius: 3px;
+}
+
+.heatmapLegend {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 3px;
+  margin-top: var(--space-sm);
+}
+
+.heatmapLegend .heatmapCell {
+  width: 12px;
+  height: 12px;
+}
+
+.heatmapLegendLabel {
+  font-size: 0.6rem;
+  color: var(--color-text-muted);
+  padding: 0 var(--space-xs);
+}
+
+/* ─── Habit Comparison ────────────────────────────────── */
+
+.comparisonList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.comparisonRow {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.comparisonInfo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.comparisonName {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.comparisonBar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.comparisonTrack {
+  flex: 1;
+  height: 8px;
+  background: var(--color-bg);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.comparisonFill {
+  height: 100%;
+  border-radius: var(--radius-full);
+  min-width: 2px;
+  transition: width var(--transition-smooth);
+}
+
+.comparisonPct {
+  font-size: var(--text-caption);
+  color: var(--color-text-muted);
+  width: 32px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.comparisonMeta {
+  display: flex;
+  gap: var(--space-md);
+  font-size: var(--text-caption);
+  color: var(--color-text-muted);
+}
+
+/* ─── Nav Button ──────────────────────────────────────── */
+
+.achievementsLink {
+  text-align: center;
+  padding: var(--space-lg) 0;
+}
+
+.navBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-lg);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: background var(--transition-fast), border-color var(--transition-fast);
+}
+
+@media (hover: hover) {
+  .navBtn:hover {
+    background: var(--color-surface-elevated);
+    border-color: var(--color-primary);
+  }
+}
+
+/* ─── Milestones ──────────────────────────────────────── */
+
+.milestoneList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.milestoneRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-xs) 0;
+  opacity: 0.5;
+}
+
+.milestoneRow.milestoneUnlocked {
+  opacity: 1;
+}
+
+.milestoneCheck {
+  width: 20px;
+  flex-shrink: 0;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  text-align: center;
+}
+
+.milestoneUnlocked .milestoneCheck {
+  color: var(--color-primary);
+}
+
+.milestoneInfo {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.milestoneName {
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.milestoneDesc {
+  font-size: var(--text-caption);
+  color: var(--color-text-muted);
+}
+
+.milestonePct {
+  font-size: var(--text-caption);
+  color: var(--color-text-muted);
+  flex-shrink: 0;
+}
+
+.milestoneDate {
+  font-size: 0.65rem;
+  color: var(--color-text-muted);
+  flex-shrink: 0;
+}
+
+/* ─── Streak History ──────────────────────────────────── */
+
+.streakList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.streakRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.streakBar {
+  flex: 1;
+  height: 12px;
+  background: var(--color-bg);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.streakFill {
+  height: 100%;
+  border-radius: var(--radius-full);
+  min-width: 4px;
+}
+
+.streakLength {
+  font-size: var(--text-caption);
+  font-weight: 600;
+  color: var(--color-text);
+  width: 28px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.streakDates {
+  font-size: 0.6rem;
+  color: var(--color-text-muted);
+  flex-shrink: 0;
+  width: 120px;
+}
+
+/* ─── Responsive ──────────────────────────────────────── */
+
+@media (max-width: 480px) {
+  .page {
+    padding: var(--space-md);
+    padding-bottom: var(--space-2xl);
+  }
+
+  .statsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .highlightsRow {
+    grid-template-columns: 1fr;
+  }
+
+  .section {
+    padding: var(--space-md);
+  }
+
+  .barChart {
+    height: 100px;
+  }
+
+  .heatmap {
+    gap: 2px;
+  }
+}

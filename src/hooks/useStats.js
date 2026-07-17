@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { getToday, isConsecutive } from '../utils/dates.js';
+import { getToday, isConsecutive, toLocalDateString } from '../utils/dates.js';
 
 export function useStats(habit) {
   return useMemo(() => {
@@ -49,7 +49,7 @@ export function useStats(habit) {
       // Check if yesterday is the last completed day
       const yesterday = new Date();
       yesterday.setDate(yesterday.getDate() - 1);
-      const yesterdayStr = yesterday.toISOString().split('T')[0];
+      const yesterdayStr = toLocalDateString(yesterday);
 
       if (sorted[sorted.length - 1] === yesterdayStr) {
         currentStreak = 1;

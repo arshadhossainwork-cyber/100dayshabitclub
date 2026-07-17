@@ -1,7 +1,20 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import SyncIndicator from '../SyncIndicator/SyncIndicator.jsx';
 import styles from './Header.module.css';
 
-export default function Header({ onAddClick, onSettingsClick, isLanding }) {
+export default function Header({
+  onAddClick,
+  onSettingsClick,
+  isLanding,
+  isSignedIn,
+  userAvatarUrl,
+  userName,
+  syncState,
+  syncError,
+  syncConflicts,
+  onSyncRetry,
+}) {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -36,6 +49,30 @@ export default function Header({ onAddClick, onSettingsClick, isLanding }) {
         )}
 
         <div className={styles.actions}>
+          {isSignedIn && (
+            <Link to="/profile" className={styles.avatarBtn} aria-label="Profile">
+              {userAvatarUrl ? (
+                <img src={userAvatarUrl} alt="" className={styles.avatarImg} />
+              ) : (
+                (userName || '?')[0].toUpperCase()
+              )}
+            </Link>
+          )}
+          {isSignedIn && (
+            <SyncIndicator
+              syncState={syncState}
+              error={syncError}
+              conflicts={syncConflicts}
+              onRetry={onSyncRetry}
+            />
+          )}
+          {!isLanding && (
+            <Link to="/progress" className={styles.iconBtn} aria-label="Progress">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M18 20V10M12 20V4M6 20v-6" />
+              </svg>
+            </Link>
+          )}
           <button
             className={styles.iconBtn}
             onClick={onSettingsClick}

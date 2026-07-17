@@ -54,7 +54,7 @@ export default function HeroSection({ onAddClick }) {
       <div className={styles.content}>
         <div className={styles.label}>
           <span className={styles.labelDot} aria-hidden="true" />
-          Free. Private. No account needed.
+          Free. Private. No account required.
         </div>
 
         <h2 className={styles.heading}>

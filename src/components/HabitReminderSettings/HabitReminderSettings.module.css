@@ -1,0 +1,188 @@
+.container {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: var(--space-sm) var(--space-md);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  transition: background var(--transition-fast);
+}
+
+@media (hover: hover) {
+  .header:hover {
+    background: var(--color-surface-elevated);
+  }
+}
+
+.headerLabel {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.chevron {
+  font-size: 0.65rem;
+  color: var(--color-text-muted);
+}
+
+.body {
+  padding: var(--space-sm) var(--space-md) var(--space-md);
+  border-top: 1px solid var(--color-border);
+}
+
+.toggleRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-xs) 0;
+}
+
+.toggleLabel {
+  font-size: 0.85rem;
+  color: var(--color-text);
+}
+
+.toggle {
+  position: relative;
+  width: 40px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.toggleInput {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+
+.toggleSlider {
+  position: absolute;
+  inset: 0;
+  background: var(--color-border);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+
+.toggleSlider::before {
+  content: '';
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  left: 3px;
+  bottom: 3px;
+  background: white;
+  border-radius: var(--radius-full);
+  transition: transform var(--transition-fast);
+  box-shadow: var(--shadow-sm);
+}
+
+.toggleInput:checked + .toggleSlider {
+  background: var(--color-primary);
+}
+
+.toggleInput:checked + .toggleSlider::before {
+  transform: translateX(16px);
+}
+
+.field {
+  margin-top: var(--space-sm);
+}
+
+.fieldLabel {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-xs);
+}
+
+.timeInput {
+  padding: var(--space-xs) var(--space-sm);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+.timeInput:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+.textInput {
+  width: 100%;
+  padding: var(--space-xs) var(--space-sm);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+.textInput:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+.textInput::placeholder {
+  color: var(--color-text-muted);
+}
+
+.daySelector {
+  display: flex;
+  gap: 4px;
+}
+
+.day {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-border);
+  transition: all var(--transition-fast);
+}
+
+@media (hover: hover) {
+  .day:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+  }
+}
+
+.dayActive {
+  composes: day;
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: white;
+}
+
+.hint {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  margin-top: 2px;
+}
+
+.charCount {
+  display: block;
+  font-size: 0.7rem;
+  color: var(--color-text-muted);
+  text-align: right;
+  margin-top: 2px;
+}
