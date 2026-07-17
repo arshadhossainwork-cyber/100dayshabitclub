@@ -51,7 +51,7 @@ function App() {
   } = useHabits();
 
   const { showToast } = useToast();
-  const { isSignedIn, user } = useAuth();
+  const { isSignedIn, user, isSupabaseConfigured } = useAuth();
 
   const {
     needRefresh,
@@ -280,6 +280,7 @@ function App() {
         onSettingsClick={() => setSettingsOpen(true)}
         isLanding={habits.length === 0 && !isCheckingMigration}
         isSignedIn={isSignedIn}
+        isSupabaseConfigured={isSupabaseConfigured}
         userAvatarUrl={user?.user_metadata?.avatar_url}
         userName={user?.user_metadata?.display_name || user?.email}
         syncState={syncState}

@@ -8,6 +8,7 @@ export default function Header({
   onSettingsClick,
   isLanding,
   isSignedIn,
+  isSupabaseConfigured,
   userAvatarUrl,
   userName,
   syncState,
@@ -49,7 +50,7 @@ export default function Header({
         )}
 
         <div className={styles.actions}>
-          {isSignedIn && (
+          {isSignedIn ? (
             <Link to="/profile" className={styles.avatarBtn} aria-label="Profile">
               {userAvatarUrl ? (
                 <img src={userAvatarUrl} alt="" className={styles.avatarImg} />
@@ -57,7 +58,9 @@ export default function Header({
                 (userName || '?')[0].toUpperCase()
               )}
             </Link>
-          )}
+          ) : isSupabaseConfigured ? (
+            <Link to="/login" className={styles.loginBtn}>Log in</Link>
+          ) : null}
           {isSignedIn && (
             <SyncIndicator
               syncState={syncState}
