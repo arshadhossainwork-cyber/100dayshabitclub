@@ -14,7 +14,7 @@ export default function AddHabitModal({ open, onClose, onAdd, existingNames = []
   const isDuplicate = existingNames.some(
     (n) => n.toLowerCase() === trimmed.toLowerCase()
   );
-  const isValid = trimmed.length >= 2;
+  const isValid = trimmed.length >= 2 && !isDuplicate;
 
   useEffect(() => {
     const dialog = dialogRef.current;

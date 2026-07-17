@@ -19,7 +19,7 @@ export default function EditHabitModal({ habit, open, onClose, onSave, existingN
   const isDuplicate = existingNames.some(
     (n) => n.toLowerCase() === trimmed.toLowerCase() && n.toLowerCase() !== (habit?.name || '').toLowerCase()
   );
-  const isValid = trimmed.length >= 2;
+  const isValid = trimmed.length >= 2 && !isDuplicate;
 
   useEffect(() => {
     if (habit) {

@@ -223,9 +223,9 @@ function App() {
       // Show completion dialog when crossing 100 for the first time in this session
       if (wasBelow && newCount === 100 && !shownCompletionsRef.current.has(habitId)) {
         shownCompletionsRef.current.add(habitId);
+        const completionSnapshot = { ...habit, completedDays: [...habit.completedDays, dateStr] };
         setTimeout(() => {
-          const updated = { ...habit, completedDays: [...habit.completedDays, dateStr] };
-          setCompletionHabit(updated);
+          setCompletionHabit(completionSnapshot);
         }, 300);
       }
     }

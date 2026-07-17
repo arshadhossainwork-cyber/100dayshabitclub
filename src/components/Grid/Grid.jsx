@@ -9,7 +9,7 @@ export default function Grid({ completedCount, color }) {
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.grid} role="img" aria-label={`${completedCount} of ${GRID_SIZE} days completed`}>
+      <div className={styles.grid} role="img" aria-label={`${Math.min(completedCount, GRID_SIZE)} of ${GRID_SIZE} days completed`}>
         {cells}
       </div>
       <div className={styles.labels}>

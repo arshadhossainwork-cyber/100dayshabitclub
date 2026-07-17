@@ -6,10 +6,6 @@ export default function TodayAction({ habit, onToggle }) {
   const isDone = habit.completedDays.includes(today);
   const isMaxed = habit.completedDays.length >= 100;
 
-  if (isMaxed && !isDone) {
-    return null; // Already completed 100 days
-  }
-
   return (
     <div className={styles.wrapper}>
       <button
