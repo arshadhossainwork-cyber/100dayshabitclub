@@ -70,17 +70,6 @@ export default function SignupPage() {
       title="Protect your streaks"
       subtitle="Create a free account to sync your habits, keep your progress safe, and continue on another device."
     >
-      <button
-        type="button"
-        className={styles.googleBtn}
-        onClick={handleGoogle}
-      >
-        <GoogleIcon />
-        Continue with Google
-      </button>
-
-      <div className={styles.divider}>or</div>
-
       <form onSubmit={handleSubmit}>
         <div className={styles.field}>
           <label className={styles.label} htmlFor="signup-name">Name</label>

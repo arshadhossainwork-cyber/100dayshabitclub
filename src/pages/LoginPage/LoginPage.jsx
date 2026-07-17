@@ -42,17 +42,6 @@ export default function LoginPage() {
 
   return (
     <AuthLayout title="Sign In" subtitle="Welcome back to your habits">
-      <button
-        type="button"
-        className={styles.googleBtn}
-        onClick={handleGoogle}
-      >
-        <GoogleIcon />
-        Continue with Google
-      </button>
-
-      <div className={styles.divider}>or</div>
-
       <form onSubmit={handleSubmit}>
         <div className={styles.field}>
           <label className={styles.label} htmlFor="login-email">Email</label>
