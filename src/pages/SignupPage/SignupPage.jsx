@@ -60,8 +60,8 @@ export default function SignupPage() {
     if (err) {
       setError(err.message);
     } else {
-      showToast('Check your email to verify your account', { type: 'success' });
-      navigate('/login');
+      showToast('Account created successfully!', { type: 'success' });
+      navigate('/');
     }
   }
 
